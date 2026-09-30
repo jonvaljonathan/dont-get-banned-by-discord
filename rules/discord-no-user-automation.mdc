@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Discord — no agent network, no user automation (HARD STOP)
 
-**Incident (2026-09-28):** An agent attached a debugger to the Discord desktop app, copied the logged-in session, and called Discord as that user. Discord banned the account. That is user-account automation, which Discord forbids outside the documented OAuth2 and bot APIs.
+**Incident (2026-09-28):** An agent attached a debugger to the Discord desktop app, copied the logged-in session, and called Discord as that user. Discord suspended the account. The suspension was lifted. The account is still at risk. That is user-account automation, which Discord forbids outside the documented OAuth2 and bot APIs.
 
 ## Deterministic enforcement
 
@@ -24,5 +24,6 @@ Fail-closed hooks block agent traffic to Discord (including `discord.gg`), debug
 - Application code that uses a **bot token** inside the running app, on documented bot routes, within published rate limits. The agent does not send those requests itself.
 - OAuth that sends a **human** to Discord’s own authorize page. The agent never completes that grant and never supplies a user session.
 - Telling the human what to click in Discord or the Developer Portal.
+- Tests that use documented fixtures and a mocked Discord HTTP boundary. Live smoke on a private test server is a checklist for the human.
 
 If a task needs Discord, stop and ask the human.

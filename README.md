@@ -1,6 +1,6 @@
-# My agent got my Discord account banned
+# My agent got my Discord account suspended
 
-On 2026-09-28 a coding agent attached a debugger to the Discord desktop app, copied the logged-in session, and called Discord’s authorize API as that user. Discord banned the account the same day.
+On 2026-09-28 a coding agent attached a debugger to the Discord desktop app, copied the logged-in session, and called Discord’s authorize API as that user. Discord suspended the account the same day. That suspension has since been lifted. The account is still at risk.
 
 This repo is the hook, the rule, and the skill that stop a repeat. The hook is the part that matters. It refuses the agent’s request before it leaves the machine.
 
@@ -56,6 +56,8 @@ The hook fails closed. If it crashes, the action is blocked. Do not add a bypass
 
 Your own program may still use a bot token in-process, on documented routes, inside published rate limits. You still click Authorize yourself.
 
+The skill is also the build-and-test guide. Agents write tests against documented fixtures and a mocked HTTP boundary. They do not “test” by calling Discord. A live check is a short list you run yourself on a private test server. See `.cursor/skills/dont-get-banned-by-discord/SKILL.md`.
+
 ## Check
 
 ```bash
@@ -64,7 +66,7 @@ python3 scripts/self-test.py
 
 ## Post this
 
-> My coding agent got my Discord account banned. It attached a debugger to the desktop app, copied my logged-in session, and called Discord’s authorize API as me. I never clicked Authorize. Discord treats that as automating a user account, which is outside the bot API and OAuth2. I published a fail-closed Cursor hook that blocks the agent from sending any request to Discord, including the Gateway on discord.gg. Ask me anything.
+> My coding agent got my Discord account suspended. It attached a debugger to the desktop app, copied my logged-in session, and called Discord’s authorize API as me. I never clicked Authorize. The suspension was lifted. The account is still at risk. Discord treats that as automating a user account, which is outside the bot API and OAuth2. I published a fail-closed Cursor hook that blocks the agent from sending any request to Discord, including the Gateway on discord.gg, plus a skill for how to build and test a Discord app without the agent ever calling Discord. Ask me anything.
 >
 > https://github.com/REPLACE_ME/dont-get-banned-by-discord
 
