@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "command": "python3 ./hooks/block-discord-requests.py",
+        "matcher": "Shell|CallDynamicTool",
+        "failClosed": true
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "python3 ./hooks/block-discord-requests.py",
+        "failClosed": true
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "command": "python3 ./hooks/block-discord-requests.py",
+        "failClosed": true
+      }
+    ]
+  }
+}
