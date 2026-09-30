@@ -68,7 +68,7 @@ python3 scripts/self-test.py
 
 > My coding agent got my Discord account suspended. It attached a debugger to the desktop app, copied my logged-in session, and called Discord’s authorize API as me. I never clicked Authorize. The suspension was lifted. The account is still at risk. Discord treats that as automating a user account, which is outside the bot API and OAuth2. I published a fail-closed Cursor hook that blocks the agent from sending any request to Discord, including the Gateway on discord.gg, plus a skill for how to build and test a Discord app without the agent ever calling Discord. Ask me anything.
 >
-> https://github.com/REPLACE_ME/dont-get-banned-by-discord
+> https://github.com/jonvaljonathan/dont-get-banned-by-discord
 
 ## Sources
 
